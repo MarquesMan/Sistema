@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[bottom=2cm,top=3cm,left=4cm,right=3cm]{geometry}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = blue
+}
+
+\title{Documenta\c{c}\~ao Sistema de Est\'agios}
+\author{Gabryel Rigol da Silva \and Lucas Marques Macedo Navarezi \and Victor Ga\'iva}
+
+
+\begin{document}
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+\section{Introdu\c{c}\~ao}
+O Sistema de Estágios é um site desenvolvido usando o modelo MVC(Model-View-Controller) com a finalidade de agilizar a aprovação da documentação referente aos estágios dos alunos, inicialmente da FACOM-UFMS.\\
+Este documento possui a finalidade de demonstrar toda a arquitetura do site e o funcionamento das páginas, para uma boa compreensão das pessoas que irão fazer a manutenção deste sistema.
+
+\section{Configura\c{c}\~ao URL}
+Para definirmos qual controlador e qual ação será usado, nós passamos os nomes como parâmetros, assim temos o seguinte formato:\\\\
+http://www.sistema.com/index.php?url=controlador/ação/parametro1/parametro2/etc...\\\\
+Mas para uma melhor visualiza\c{c}\~ao da url utilizamos o arquivo .htaccess para fazer a reescrita dela, assim ela ficará no seguinte formato:\\\\
+http://www.sistema.com/controlador/a\c{c}\~ao/parametro1/parametro2/etc...
+
+\newpage
+\section{Arquivos Principais}
+\subsection{index.php} \label{sec:index}
+O arquivo index.php apenas inclui o arquivo config.php
+
+\subsection{config.php} \label{sec:config}
+O arquivo config.php é responsável por definir algumas constantes e incluir o arquivo loader.php;
+
+\subsection{loader.php} \label{sec:loader}
+O arquivo loader.php inclui o arquivo global-functions.php, que é responsável por manter todas as funções globais, e também é responsável por instanciar a classe \hyperref[sec:SistemaMVC]{SistemaMVC} que vai controlar todo o início da aplicação.
+
+\subsection{global-functions.php} \label{sec:global-functions}
+A função mais importante que temos é a \_autoload, para carregar classes automaticamente.
+
+\newpage
+\section{Classes Pad\~ao}
+	Dentro do diretório Classes temos os arquivos que contém as classes bases do sistema.\\
+	A padronização dos nomes dos arquivos é class-NomeDaClasse.php
+
+	\subsection{class-SistemaMvc.php} \label{sec:SistemaMVC}
+		O construtor dessa classe é responsável por ler os parâmetros passados na url, incluir o arquivo que contem o 			controlador, instanciar a classe do controlador e chamar a ação.\\
+		Caso o controlador não seja passado, será incluído o controlador Login.
+		Caso a ação não seja passada, será chamada a ação index.
+
+	\subsection{class-SistemaBD.php} \label{sec:SistemaBD}
+		Classe responsável por fazer a conexão com o banco de dados e realizar consultas, possuímos a seguintes funções:
+
+		\subsubsection{query:}
+			Parâmetros: \$stmt(String da consulta SQL), \$data\_array(array dos valores);\\\\
+			Funcionamento: Prepara e executa a consulta, caso a consulta não seja feita retorna false, senão retorna o 				resultado da consulta.\\\\
+			Exemplo de uso:\\\\
+			db-$>$query('SELECT * FROM tabela WHERE campo = ? AND outro\_campo = ?',
+			
+			\qquad\qquad array( 'valor', 'valor' )) 
+
+		\subsubsection{insert:}
+			Parâmetros: \$table, os valores da array são coletadas pela função func\_get\_args();\\\\
+			Funcionamento: Cria uma string usando a tabela e a array, e então chama a função query()\\\\
+			Exemplo de uso:\\\\
+			db-$>$query('tabela', 
+	
+						// Insere uma linha
+						
+						array('campo\_tabela' =$>$ 'valor', 'outro\_campo'  =$>$ 'outro\_valor'),
+	
+						// Insere outra linha
+						
+						array('campo\_tabela' =$>$ 'valor', 'outro\_campo'  =$>$ 'outro\_valor'),
+	
+						// Insere outra linha
+						
+						array('campo\_tabela' =$>$ 'valor', 'outro\_campo'  =$>$ 'outro\_valor')) 
+
+		\newpage
+		\subsubsection{update:}
+			Parâmetros:\$table (tabela onde está o dado),
+			
+			\qquad\qquad\$where\_field (coluna de comparação),
+			
+			\qquad\qquad\$where\_field\_value(valor a ser comparado),
+			
+			\qquad\qquad\$values(campos a serem alterados e seus valores);\\\\
+			Funcionamento: Cria uma string usando a tabela, campo\_where, valor\_where, e a array, e então chama a função query()\\\\
+			Exemplo de uso:\\\\
+			db-$>$query('tabela', 'campo\_where', 'valor\_where',
+	
+					\qquad\qquad// Atualiza a linha
+					
+					\qquad\qquad array('campo\_tabela' =$>$ 'valor', 'outro\_campo'  =$>$ 'outro\_valor')
+
+		\subsubsection{delete:}
+			Parâmetros:\$table (tabela onde esta o dado),
+			
+			\qquad\qquad\$where\_field (campo de comparação),
+			
+			\qquad\qquad\$where\_field\_value (valor a ser comparado)\\\\
+			Funcionamento: Cria uma string usando a tabela, campo\_where, valor\_where e então chama a função query()\\\\
+			Exemplo de uso:\\\\
+			db-$>$query('tabela', 'campo\_where', 'valor\_where')
+			
+	\subsection{class-UserLogin.php}
+\end{document}

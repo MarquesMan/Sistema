@@ -1,0 +1,76 @@
+html{
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: #f5f5f5;
+}
+
+.centralizar{
+	margin-top: 15%;
+}
+
+.alerta{
+	position: absolute; 
+	top: 20px;
+}
+
+.login{
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.centro{
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.centro-f{
+	display: table-cell;
+	height: 100%;
+	width: 100%;
+	vertical-align: middle;
+}
+
+.menuslide{
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	right: 0%;
+	height: 100%;
+	width: 50%;
+	display: none;
+	background-color: #f5f5f5;
+}
+
+[name=fechar_slide] > button{
+	background: transparent;
+	border: none !important;
+	font-size: 24px;
+	color: #428bca;
+}
+
+label{text-align: right;}
+.escurecer{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0, 0.5);
+}
+@media (max-width: 767px) {
+	.container-fluid {width: 95%;}
+	.centro-f{vertical-align: top; padding-top: 80px;}
+	.menuslide{width: 100%;}
+	label{text-align: left;}
+	select{width: 100%;}
+	.menuslide > .container{width: 95%;}
+}

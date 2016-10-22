@@ -1,0 +1,92 @@
+
+body {
+	background-color: #f5f5f5;
+	background-position: center center;
+}
+
+.glyphicon{
+
+cursor: pointer;
+
+}
+
+
+.table th, .table td { 
+     border-top: none !important; 
+ }
+
+.table {
+	background-color: white;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #ddd;
+}
+
+.panel{
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.panel-heading{
+	cursor: hand;
+}
+
+.tabela-cabecalho{
+	width: 90%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	color: #0070a8;
+}
+
+p{
+	word-break: break-all;
+	word-wrap:break-word;
+	vertical-align: top; 
+	overflow-y: auto;
+	text-align: left;
+}
+
+.corpo{
+	margin-top: 10px;
+	height: 100%;
+}
+
+@media (max-width: 767px) { 
+    .nav-tabs > li {
+        float:none;
+    }
+
+    .corpo{
+	margin-top: 150px; 
+	}
+}
+
+.radiocheck {
+    -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+    -moz-appearance: checkbox;    /* Firefox */
+    -ms-appearance: checkbox;     /* not currently supported */
+}
+
+.relatorio_table{
+	display: table;
+}
+
+.relatorio_row{
+	display: table-row;
+}
+
+.relatorio_cell{
+	display: table-cell;
+}
+
+/*.linhas-avaliacao > span{
+	border-bottom: 1px solid black;
+} */

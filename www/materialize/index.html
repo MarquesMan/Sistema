@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html style="height: 100% !important;">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Parallax Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+</head>
+
+<body style="height: 100% !important;">
+<div id="slide-out" class="side-nav" width="50%">
+	        	<div class="row">
+	        		
+	        		<div class="input-field col s12">
+						<select id="proforaluno" name="tipo" class="col s4" style="width: 20%;">
+							<option value="E" selected="selected">Estudante</option>
+							<option value="P">Surpevisor</option>
+							<option value="B">Empresa</option>
+						</select>
+  					</div>	
+							
+
+							<form id="form-pessoa" name="Form" method="post" action="Controllers/Controller-index.php" class="col s12">
+									
+									<div class="row" hidden>
+										<div class="input-field col s12">
+											<input id="tipo" name="tipo" hidden></input>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="input-field col s12">
+											<input id="fullname" name="fullname" type="text">
+											<label for="fullname">Nome Completo:</label>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="input-field col s12">
+											<input id="username" name="username" type="text">
+											<label for="username" >Nome de Usuário:</label>
+										</div>										
+									</div>
+
+									 <div id="cursoID" class="input-field col s12">
+										<select name="idCurso">
+									    	<option value="" disabled selected>Escolha seu curso</option>
+									      	<option value="1">Option 1</option>
+									      	<option value="2">Option 2</option>
+									      	<option value="3">Option 3</option>
+									    </select>
+									    <label>Curso:</label>
+  									</div>
+
+									<div id="rgaID" class="row">
+										<div class="input-field col s12">
+											<input id="rga" name="rga" type="text">
+											<label for="rga">RGA:</label>
+										</div>							
+									</div>
+
+									<div class="row">
+										<div class="input-field col s12">
+											<input id="email" name="email" type="email">
+											<label for="email">E-mail:</label>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="input-field col s12" height="30px">
+											<input id="password" name="password" type="password">
+											<label for="password">Senha:</label>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="input-field col s12">
+											<input id="conf_password" name="conf_password" type="password">
+											<label for="conf_password">Confirmar Senha:</label>
+										</div>
+									</div>
+
+									<div class="row">
+								    	<div class="input-field col s6">
+								      		<button id="cadastro_pessoa" name="botao_envio" value="botao_pessoa" value="Cadastrar" class="btn" style="width: 100%;">Cadastrar</button>
+								    	</div>
+								  	</div>
+
+								</form>
+
+
+							<form id="form-empresa" name="Form-empresa" method="post" action="Controllers/Controller-index.php" class="col s12" hidden>
+									<input name="tipo" value="B" hidden></input>
+									
+									<div class="row">
+										<label for="">Nome:</label>
+										
+											<input name="nome-empresa" class=""/>
+										
+									</div>
+
+									<div class="row">
+										<label for="">CEP:</label>
+										
+											<input id="cep" type="text" name="cep-empresa" class="" />
+										
+									</div>
+
+									<div class="row">
+										<label for="">Rua:</label>
+										
+											<input name="rua-empresa" class="" />
+										
+									</div>
+
+									<div class="row">
+										<label for="">Número:</label>
+										
+											<input name="numero-empresa" class="" />
+										
+									</div>
+
+									<div class="row">
+										<label for="">Bairro:</label>
+										
+											<input name="bairro-empresa" class="" />
+										
+									</div>
+
+									<div class="row">
+										<label for="">Complemento:</label>
+										
+											<input name="complemento" class=""/>
+										
+									</div>
+
+									<div class="row">
+										<label for="">Telefone:</label>
+										
+											<input id="telefone" type="text" id="telefone-empresa" name="telefone-empresa" class=""/>
+										
+									</div>
+
+									<div class="row">
+										<label for="">E-mail:</label>
+										
+											<input name="email-empresa" class=""/>
+									</div>
+
+									<div class="row">
+								    	
+								      		<button id="cadastro_empresa" name="botao_envio" value="botao_empresa" value="Cadastrar" class="btn btn-primary" style="width: 100%;">Cadastrar</button>
+								    	
+								  	</div>
+								</form>								
+					</div>			
+	  		</div>
+    <div class="container" style="height: 100% !important;">
+        <div class="row valign-wrapper" style="height: 100% !important;">
+            <form class="col s12" id="form_login" name="form_login" method="get" action="#">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" name="username" class="" id="inputEmail3" placeholder="Nome de Usuário">
+                        <label for="inputEmail3" class="col-md-2 control-label">Nome de Usuario:</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="password" name="password" id="inputPassword3" placeholder="Senha">
+                        <label for="inputPassword3">Senha:</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <button name="botao_envio" value="botao_login" type="submit" class="btn waves-effect waves-light">Login</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <a id="cadastrar" href="#" data-activates="slide-out" class="button-collapse">Cadastre-se</a>
+                        <a id="recuperar" href="#" data-activates="slide-out" class="button-collapse" style="margin-left: 20px;">Recuperar Senha</a>
+                    </div>
+                </div>
+            </form> 
+        </div>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script type="text/javascript">
+
+  	$('.button-collapse').sideNav({
+      menuWidth: 500, // Default is 240
+      edge: 'right', // Choose the horizontal origin
+      closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    });
+
+  	$('select').material_select();
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<?php 	require_once("cabecalho.php");
+		require_once("conecta.php") ?>
+
+	<script src="js/plano-de-atividades.js"></script>
+	
+		<?php
+			
+
+			if(isset($_GET['idEstagio'])){
+				$idEstagio = $_GET['idEstagio'];
+				$estagio = mysqli_query($mysqli,"SELECT * FROM estagio WHERE id='".$idEstagio."' AND id_aluno='".$_SESSION["id"]."'") or die(mysqli_error($mysqli));
+				$estagio = mysqli_fetch_assoc($estagio);	
+			}else{
+				erroPadrao();
+			}
+
+			if(empty($estagio)|| !isset($_GET['plano']) ){ 
+					erroPadrao();
+			}
+
+			$query = mysqli_query($mysqli,"SELECT * FROM plano_de_atividades WHERE id='".$_GET["plano"]."' AND id_estagio='".$idEstagio."' AND id_aluno='".$_SESSION["id"]."'") or die(mysqli_error($mysqli));
+			$planoRow = mysqli_fetch_assoc($query);
+
+			if(empty($planoRow)){
+				erroPadrao();
+			}
+
+			if(!strcmp($planoRow['status'], "alterar")){
+
+				$horarios = $planoRow['horario'];
+				$horarios = explode(";", $horarios);
+				$erros = explode(";", $planoRow['erros']);
+			
+		?>
+		<div class="plano-horarios">
+			<table class="form-p" style="margin-bottom: 0;">
+				<form method="post" action="change_plano.php">
+					<input hidden name="idEstagio" value="<?php echo $_GET["idEstagio"] ?>"/>
+					<tr heigth="40px">
+						<td colspan="4"><center><b>Horário</b></center></td>
+						<td><center><b>Atividades a serem desenvoldidas</b></center></td>
+						<td rowspan="6">
+							<center><b>Local</b></center><br><br><input  boolt="<?php echo $erros[0];?>" type="text" style="padding:0;text-align: center; " value="<?php echo $planoRow	['local']; ?>" id="local" name="local" > <br><br>
+							<center><b>Carga horária</b></center><br><br><input type="text"  boolt="<?php echo $erros[1];?>" style="padding:0;text-align: center; " id="carga" value="<?php echo $planoRow	['cargaH']; ?>" name="carga" ><br><br>
+							<center><b>Data</b></center><br><br><input type="text"  boolt="<?php echo $erros[2];?>" style="padding:0;text-align: center;" id="data" value="<?php echo $planoRow	['data']; ?>" name="data" ><br><br>
+
+						</td>
+					</tr>
+
+					<tr>
+						<td width="155px" align="right">Segunda-feira das</td> 
+						<td><input type="text" name="segunda1" id="segunda1" value="<?php echo $horarios[0]; ?>"   boolt="<?php echo $erros[3];?>" style="width:50px;padding:0;text-align: center;"/></td>
+						<td> às </td> 
+						<td><input type="text" name="segunda2" id="segunda2"  value="<?php echo $horarios[1]; ?>"  boolt="<?php echo $erros[4];?>" style="width:50px;padding:0;text-align: center;"/></td>
+						
+					</tr>
+
+					<tr>
+						<td align="right">Terça-feira das</td>
+						<td><input type="text" name="tercal" id="tercal" value="<?php echo $horarios[2]; ?>"  boolt="<?php echo $erros[5];?>"  style="width:50px;padding:0;text-align: center;"/></td>
+						<td> às </td>
+						<td><input type="text" name="terca2" id="terca2" value="<?php echo $horarios[3]; ?>"  boolt="<?php echo $erros[6];?>" style="width:50px;padding:0;text-align: center;"/></td>
+					</tr>
+
+					<tr>
+						<td align="right">Quarta-feira das</td>
+						<td><input type="text" name="quarta1" id="quarta1" value="<?php echo $horarios[4]; ?>"  boolt="<?php echo $erros[7];?>"  style="width:50px;padding:0;text-align: center;"/></td>
+						<td> às </td>
+						<td><input type="text" name="quarta2" id="quarta2" value="<?php echo $horarios[5]; ?>"  boolt="<?php echo $erros[8];?>" style="width:50px;padding:0;text-align: center;"/></td>
+					</tr>
+
+					<tr>
+						<td align="right">Quinta-feira das</td>
+						<td><input type="text" name="quinta1" id="quinta1" value="<?php echo $horarios[6]; ?>"  boolt="<?php echo $erros[9];?>" style="width:50px;padding:0;text-align: center;"/></td>
+						<td> às </td>
+						<td><input type="text" name="quinta2" id="quinta2" value="<?php echo $horarios[7]; ?>"  boolt="<?php echo $erros[10];?>" style="width:50px;padding:0;text-align: center;"/></td>
+					</tr>
+
+					<tr>
+						<td align="right">Sexta-feira das</td>
+						<td><input type="text" name="sexta1" id="sexta1" value="<?php echo $horarios[8]; ?>"  boolt="<?php echo $erros[11];?>"  style="width:50px;padding:0;text-align: center;"/></td>
+						<td> às </td>
+						<td><input type="text" name="sexta2" id="sexta2" value="<?php echo $horarios[9]; ?>"  boolt="<?php echo $erros[12];?>" style="width:50px;padding:0;text-align: center;"/></td>
+					</tr>
+
+					<tr>
+						<td align="right">Sábado das</td>
+						<td><input type="text" name="sabado1" id="sabado1" value="<?php echo $horarios[10]; ?>"  boolt="<?php echo $erros[13];?>"  style="width:50px;padding:0;text-align: center;"/></td>
+						<td> às </td>
+						<td><input type="text" name="sabado2" id="sabado2"  value="<?php echo $horarios[11]; ?>"  boolt="<?php echo $erros[14];?>" style="width:50px;padding:0;text-align: center;"/></td>
+						<td rowspan="6">
+							<textarea rows="10" cols="50" style="resize:none" name="descricao" id="descricao"  boolt="<?php echo $erros[15];?>"> <?php echo $planoRow	['descricao']; ?> </textarea>
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="6">
+							<input hidden name="idEstagio"		 			value="<?php echo $_GET["idEstagio"] ?>"/>
+							<input hidden name="erros"		id="erros" 		value="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0">;
+							<input hidden name="horarios" 	id="horarios" 	value="">
+							<center><button id="Save"   name="plano"   class="btn btn-success" value="<?php echo $_GET['plano']; ?>" width="100%">Salvar</button>
+									<button id="Saves"   name="plano-s" class="btn btn-success" value="<?php echo $_GET['plano']; ?>" width="100%">Submeter</button></center>
+						</td>
+
+					</tr>
+				</form>
+			</table>
+			<?php 
+			}// Fim if
+			else{
+				header('Location: documentos-estagio.php?idEstagio='.$_GET['idEstagio']);
+			}
+			?>
+
+<?php require_once("rodape.php") ?>

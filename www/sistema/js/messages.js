@@ -1,0 +1,97 @@
+var Nome_Selecionado = "";
+var ID_Selecionado = 0;
+var Selected_Td;
+var ID_User;
+
+function Sendmsg()
+{
+	if(Nome_Selecionado != "" && document.getElementById("MessageTextArea").value != "" && ID_Selecionado != 0)
+	{
+		document.getElementById("MessageTextArea").setAttribute("disabled", "disabled");
+		document.getElementById("SendButton").setAttribute("disabled", "disabled");
+		$("#SendButton span").first().hide();
+		$("#SendButton img").first().show();
+
+		
+		var xmlhttp = (window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+
+		//Após receber os dados execute a seguinte função
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(parseInt(ID_Selecionado) == -1){
+					if(parseInt(xmlhttp.responseText.replace(/(\r\n|\n|\r)/gm,"")) < 0){
+						alert("Erro: "+xmlhttp.responseText.replace(/(\r\n|\n|\r)/gm,""));
+					}
+					else{
+						ID_Selecionado = xmlhttp.responseText.replace(/(\r\n|\n|\r)/gm,"");
+						document.getElementById(Selected_Td).setAttribute("value", ID_Selecionado);
+					}
+				}
+				else{
+					if(parseInt(xmlhttp.responseText.replace(/(\r\n|\n|\r)/gm,"")) < 0){
+						alert("Erro: "+xmlhttp.responseText.replace(/(\r\n|\n|\r)/gm,""));
+					}
+				}
+				Update_iFrame();
+			}
+		}
+		
+		//determina o metodo
+		xmlhttp.open("POST","Send_Text_Msg.php", true);
+		
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		//Envia a requisição
+		xmlhttp.send("ID_User="+encodeURIComponent(ID_User)+"&Nome_Selecionado="+encodeURIComponent(Nome_Selecionado)+"&ID_Conversa=" + ID_Selecionado+ "&MessageTextArea="+encodeURIComponent(document.getElementById("MessageTextArea").value));
+	}
+}
+
+//Atualiza a conversa 
+function Update_iFrame()
+{
+	var Selected = '<iframe style="border: none;" width="100%" height="100%" src="http://localhost/sistema/conversa.php?ID_Conversa=';
+	Selected += ID_Selecionado;
+	Selected += '"></iframe>';
+
+	$("div.mensagens > iframe").remove();
+
+	$("div.mensagens").append(Selected);
+
+	document.getElementById("MessageTextArea").value = "";
+	document.getElementById("MessageTextArea").removeAttribute("disabled");
+	document.getElementById("SendButton").removeAttribute("disabled");
+	document.getElementById("MessageTextArea").focus();
+	$("#SendButton img").first().hide();
+	$("#SendButton span").first().show();
+}
+
+$(document).ready(function(){
+    $('#MessageTextArea').keydown(function(event) {
+        if (event.keyCode == 13) {
+            Sendmsg();
+            return false;
+         }
+    });
+
+	$("tr.linha").click(function(){
+		Selected_Td 		= $(this).find("td").eq(0).attr("id");
+		ID_Selecionado 		= $(this).find("td").eq(0).attr("value");
+		Nome_Selecionado 	= $(this).find("td").eq(1).attr("value");
+		ID_User				= $(this).find("td").eq(2).attr("value");
+		Update_iFrame();
+	});
+
+	$("tr.linha").hover(function(){
+		var $this = $(this);
+
+		if (!$this.data('originalBg')) { // First time, no original value is set.
+			$this.data('originalBg', $this.css('background-color')); // Store original value.
+		}
+		$(this).css('background-color', 'none');
+		$(this).css('background-color', '#e3e3e3');
+		}, function(){
+		var $this = $(this);
+		$(this).css('background-color', $this.data('originalBg'));
+	});
+});
+
+

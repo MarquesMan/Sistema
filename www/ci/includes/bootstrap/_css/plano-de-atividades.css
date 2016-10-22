@@ -1,0 +1,35 @@
+.plano{
+	float: left;
+}
+
+.plano-cont{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.plano-local{
+	width:100%;
+	text-align: center;
+}
+
+.plano-input {
+	width:50px;
+	padding:0;
+	text-align: center;
+}
+
+.plano-titulo{
+
+}
+
+.plano-hora{
+	display: inline-block;
+	height: 22.2222222px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+textarea {
+	width: 100%;
+}

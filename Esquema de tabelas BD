@@ -1,0 +1,15 @@
+$conversas = (User1, User2, {ID}, TotalMensagens)
+
+$empresa = ({id}, nome, email, telefone, ativa, ativa_email, rua, cep, numero, bairro)
+
+$estagio = ({id}, id_aluno, id_empresa, id_supervisor, modalidade, area, inicio, fim, status)
+
+$mensages = ({ID_Conversa, Marca_De_Tempo, nome_remetente}, Conteudo)
+
+$plano_de_atividades = ({id}, id_estagio, id_aluno, horario, descricao, local, data, time, cargaH, status)
+
+$plano_de_bool = ({id_plano}, segunda1, segunda2, terca1, terca2, quarta1, quarta2, quinta1, quinta2, sexta1, sexta2, sabado1, sabado2, descricao, local, data, prof_hidden, cargaH)
+
+$relatorio = ({id}, id_aluno, id_estagio, tipo, inicio, fim, atividades, com_aluno, avaliacao, observacao, data, time, status, erros)
+
+$users = ({id}, ativa, ativa_email, rga, full_name, username, email, password, Tipo, hash)

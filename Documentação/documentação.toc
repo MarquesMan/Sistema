@@ -1,0 +1,16 @@
+\select@language {brazil}
+\contentsline {section}{\numberline {1}Introdu\c {c}\~ao}{3}{section.1}
+\contentsline {section}{\numberline {2}Configura\c {c}\~ao URL}{3}{section.2}
+\contentsline {section}{\numberline {3}Arquivos Principais}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}index.php}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}config.php}{4}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}loader.php}{4}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}global-functions.php}{4}{subsection.3.4}
+\contentsline {section}{\numberline {4}Classes Pad\~ao}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}class-SistemaMvc.php}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}class-SistemaBD.php}{5}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}query:}{5}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}insert:}{5}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}update:}{6}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}delete:}{6}{subsubsection.4.2.4}
+\contentsline {subsection}{\numberline {4.3}class-UserLogin.php}{6}{subsection.4.3}

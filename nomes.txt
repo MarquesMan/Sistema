@@ -1,0 +1,4 @@
+ 	SIEGE		SIstEma de Gerenciamento de Estagio
+ 	STAGE		SisTemA de Gerenciamento de Estagio
+ 	Sistagio	SISTemA de esTAGIO
+ 	Stageando	- finge que isso aqui o da linha 2 só que com ando no final -

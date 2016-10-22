@@ -1,0 +1,13 @@
+.popover {
+	background-color: #CE2424;
+    color: #FFFFFF;
+}
+
+.popover.top .arrow:after {
+    border-top-color: #CE2424;
+}
+
+.popover-content {
+    font-size: 12px;
+    font-weight: bold;
+}

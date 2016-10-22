@@ -1,0 +1,39 @@
+body{
+	padding-top: 70px;
+}
+
+.erroPadrao{
+
+	font-size:120%;
+	font-weight: bold;
+
+}
+
+.form-p{
+
+	margin-top: 5%;
+	border-spacing:25px;
+	background-color:rgba(255,255,255,0.65);
+	border-radius: 10px;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 10%;
+}
+
+.table-relatorio{
+	border-radius: 10px;
+	width: 80%;
+	background-color: rgba(255, 255, 255, 0.65);
+}
+
+.nav-pills li {
+    float:none;
+    display:table-cell;
+    width:1%;
+    text-align:center;
+}
+
+.navbar{
+	background: #ffffff;
+	border-radius: 0px;
+}

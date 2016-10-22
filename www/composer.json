@@ -1,0 +1,5 @@
+{
+    "require": {
+        "elboletaire/twbs-cake-plugin": "^3.0"
+    }
+}

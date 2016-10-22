@@ -1,0 +1,78 @@
+body {
+	background-color: #f5f5f5;
+	padding-top: 70px;
+}
+
+.principal {
+	border: 1px rgba(0,0,40 ,0.1)solid;
+	background-color: white;
+	margin-left:auto;
+	margin-right:auto;
+	width: 1092px;
+	height: 450px;
+}
+
+.conversas{
+	position: relative;
+	width: 20%;
+	height: 91%;
+	float: left;
+	margin-top: 1%;
+	margin-left: 1%;
+}
+
+.mensagens{
+	position: relative;
+	width: 74%;
+	height: 70%;
+	float: left;
+	border: 1px rgba(0,0,40 ,0.1)solid;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	margin-top: 1%;
+	margin-left: .5%;
+
+}
+
+.linha{
+	border: 1px rgba(0,0,40 ,0.05)solid;
+	background-color:#f3f3f3
+	padding-bottom: 1px;
+	border-radius: 3px;
+}
+.enviar{
+	position: relative;
+	width: 74%;
+	height: 20.75%;
+	float: left;
+	margin-top: 0.2%;
+	margin-left: .5%;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	vertical-align: middle;
+}
+
+.conversas span{
+	width: 95%;
+	font-size: 200%;
+}
+
+.conversas div{
+	width: 95%;
+	height: 98%;
+	overflow: auto;
+	margin: auto;
+}
+#MessageTextArea{
+	font-size: 14px;
+	font-weight: normal;
+	resize: none;
+	width: 85%;
+	border-radius: 3px;
+}
+#SendButton{
+	border-radius: 2px;
+
+}
